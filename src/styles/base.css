@@ -1,0 +1,60 @@
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    /* Anchored sections land below a sticky header. */
+    scroll-padding-top: var(--spacing-header);
+  }
+
+  body {
+    @apply bg-canvas font-sans text-body text-ink antialiased;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--line);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--canvas);
+  }
+
+  /* Swap the semantic colors for a subtree: footers, panels, text over imagery. */
+  .theme-inverse {
+    --ink: #fff;
+    --ink-muted: rgb(255 255 255 / 0.65);
+    --canvas: #000;
+    --canvas-subtle: #161616;
+    --media: #1c1c1c;
+    --line: rgb(255 255 255 / 0.3);
+    --line-strong: #fff;
+
+    color: var(--ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

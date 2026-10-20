@@ -1,0 +1,183 @@
+/*
+ * Design tokens.
+ *
+ * Semantic colors are plain CSS variables on :root so a subtree can swap them
+ * (see .theme-inverse in base.css). @theme inline maps them to Tailwind
+ * utilities such as bg-canvas, text-ink and border-line.
+ *
+ * Responsive tokens (type sizes, gutters, section spacing) are declared at
+ * their mobile value here and stepped up in the media queries at the bottom,
+ * so every utility that reads them scales without breakpoint prefixes.
+ */
+
+:root {
+  --ink: #000;
+  --ink-muted: #767676;
+  --canvas: #fff;
+  --canvas-subtle: #f7f7f7;
+  --media: #f5f5f4;
+  --line: rgb(0 0 0 / 0.15);
+  --line-strong: #000;
+  --scrim: rgb(0 0 0 / 0.4);
+  --glass: rgb(40 40 40 / 0.4);
+  --glass-strong: rgb(40 40 40 / 0.55);
+}
+
+/* Monochrome palette: the default Tailwind colors are removed on purpose. */
+@theme inline {
+  --color-*: initial;
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-canvas: var(--canvas);
+  --color-canvas-subtle: var(--canvas-subtle);
+  --color-media: var(--media);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-scrim: var(--scrim);
+  --color-glass: var(--glass);
+  --color-glass-strong: var(--glass-strong);
+
+  --color-black: #000;
+  --color-white: #fff;
+  --color-accent: #6b4f2a;
+  --color-focus: #2f6fed;
+  --color-error: #b3261e;
+  --color-success: #1f6b3a;
+  --color-warning: #8a4b00;
+
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+@theme {
+  /* Breakpoints: md tablet, lg desktop, xl wide (matches the page max width). */
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 90rem;
+
+  /*
+   * Type scale. Size, line height, tracking and weight travel together.
+   * Titles are set uppercase by convention; display sizes use font-display.
+   */
+  --text-*: initial;
+  --text-caption: 0.625rem;
+  --text-caption--line-height: 0.75rem;
+  --text-caption--letter-spacing: 0.04em;
+  --text-caption--font-weight: 500;
+
+  --text-body-sm: 0.75rem;
+  --text-body-sm--line-height: 1rem;
+  --text-body-sm--letter-spacing: 0;
+  --text-body-sm--font-weight: 400;
+
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.25rem;
+  --text-body--letter-spacing: -0.005em;
+  --text-body--font-weight: 400;
+
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.5rem;
+  --text-body-lg--letter-spacing: -0.01em;
+  --text-body-lg--font-weight: 300;
+
+  --text-lead: 1.5rem;
+  --text-lead--line-height: 2rem;
+  --text-lead--letter-spacing: -0.02em;
+  --text-lead--font-weight: 300;
+
+  --text-title-xs: 0.75rem;
+  --text-title-xs--line-height: 1rem;
+  --text-title-xs--letter-spacing: 0.04em;
+  --text-title-xs--font-weight: 600;
+
+  --text-title-sm: 0.875rem;
+  --text-title-sm--line-height: 1.25rem;
+  --text-title-sm--letter-spacing: 0.02em;
+  --text-title-sm--font-weight: 600;
+
+  --text-title-md: 1.25rem;
+  --text-title-md--line-height: 1.5rem;
+  --text-title-md--letter-spacing: -0.01em;
+  --text-title-md--font-weight: 500;
+
+  --text-title-lg: 1.5rem;
+  --text-title-lg--line-height: 2rem;
+  --text-title-lg--letter-spacing: -0.02em;
+  --text-title-lg--font-weight: 400;
+
+  --text-title-xl: 2rem;
+  --text-title-xl--line-height: 2.25rem;
+  --text-title-xl--letter-spacing: -0.03em;
+  --text-title-xl--font-weight: 300;
+
+  --text-title-2xl: 2.5rem;
+  --text-title-2xl--line-height: 2.75rem;
+  --text-title-2xl--letter-spacing: -0.03em;
+  --text-title-2xl--font-weight: 300;
+
+  --text-display-md: 3.5rem;
+  --text-display-md--line-height: 1;
+  --text-display-md--letter-spacing: -0.03em;
+  --text-display-md--font-weight: 400;
+
+  --text-display-lg: 4rem;
+  --text-display-lg--line-height: 0.95;
+  --text-display-lg--letter-spacing: -0.04em;
+  --text-display-lg--font-weight: 400;
+
+  /*
+   * Spacing keeps Tailwind's 4px step (p-4 = 1rem). These named values add
+   * the layout rhythm on top of it.
+   */
+  --spacing-gutter: 1rem;
+  --spacing-grid-gap: 0.5rem;
+  --spacing-section: 3rem;
+  --spacing-header: 3.5rem;
+
+  /* Corners are square; 2px is the only softening, for chips and swatches. */
+  --radius-*: initial;
+  --radius-xs: 2px;
+
+  --aspect-product: 3 / 4;
+  --aspect-portrait: 2 / 3;
+  --aspect-landscape: 3 / 2;
+  --aspect-story: 9 / 16;
+
+  /* One slow, decisive curve for every transition. */
+  --ease-luxe: cubic-bezier(0.6, 0, 0.1, 1);
+  --default-transition-duration: 600ms;
+  --default-transition-timing-function: var(--ease-luxe);
+
+  --blur-glass: 16px;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --spacing-gutter: 2rem;
+    --spacing-section: 4rem;
+  }
+}
+
+@media (width >= 64rem) {
+  :root {
+    --spacing-gutter: 4rem;
+    --spacing-grid-gap: 1rem;
+    --spacing-section: 6rem;
+    --spacing-header: 4.5rem;
+
+    --text-lead: 2rem;
+    --text-lead--line-height: 2.75rem;
+    --text-title-sm: 1rem;
+    --text-title-sm--line-height: 1.5rem;
+    --text-title-md: 1.5rem;
+    --text-title-md--line-height: 2rem;
+    --text-title-lg: 2rem;
+    --text-title-lg--line-height: 2.5rem;
+    --text-title-xl: 3rem;
+    --text-title-xl--line-height: 3rem;
+    --text-title-2xl: 4rem;
+    --text-title-2xl--line-height: 4rem;
+    --text-display-md: 6.5rem;
+    --text-display-lg: 8.5rem;
+  }
+}
