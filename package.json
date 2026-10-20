@@ -11,7 +11,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio",
+    "db:studio": "node -e \"console.error('Drizzle Studio is disabled: the installed SQL proxy lacks caller authentication and trusted-origin checks. See README.md.'); process.exit(1)\"",
     "auth:generate": "npx auth@1.7.11 generate --config src/lib/auth.ts --output src/db/auth-schema.ts",
     "db:seed": "tsx src/db/seed.ts"
   },
