@@ -26,7 +26,7 @@ npm run db:generate    # drizzle-kit: SQL migrations into ./drizzle
 npm run db:migrate     # apply migrations to Neon
 npm run db:push        # push schema directly (prototyping)
 npm run db:seed        # upsert the launch catalog (src/db/seed-data.ts); safe to re-run
-npm run db:studio      # Drizzle Studio
+npm run db:studio      # disabled: unauthenticated Studio SQL proxy; see README
 ```
 
 There is no test framework set up yet.
